@@ -39,7 +39,7 @@
 	--noise: 0;
 }
 
-body {
+html {
 	background: linear-gradient(180deg, #020e1f 0%, #0a1628 100%);
 }
 
