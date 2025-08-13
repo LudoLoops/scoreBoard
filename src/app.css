@@ -2,12 +2,49 @@
 
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
-@import '@skeletonlabs/skeleton';
+@plugin "daisyui";
 
-@import '@skeletonlabs/skeleton/optional/presets';
-@import '@skeletonlabs/skeleton/themes/mona';
-@import '@skeletonlabs/skeleton/themes/cerberus';
+@plugin "daisyui/theme" {
+	name: 'spaceCowboy';
+	default: false;
+	prefersdark: false;
+	color-scheme: 'light';
+	--color-base-100: #04192c;
+	--color-base-200: oklch(6% 0.015 220);
+	--color-base-300: oklch(65% 0.25 195);
+	--color-base-content: oklch(95% 0.03 240);
+	--color-primary: oklch(65% 0.25 195);
+	--color-primary-content: oklch(95% 0.03 240);
+	--color-secondary: oklch(55% 0.28 300);
+	--color-secondary-content: oklch(95% 0.03 240);
+	--color-accent: oklch(30% 0.18 305);
+	--color-accent-content: oklch(90% 0.076 70.697);
+	--color-neutral: oklch(50% 0.15 220);
+	--color-neutral-content: oklch(95% 0.02 240);
+	--color-info: oklch(55% 0.2 200);
+	--color-info-content: oklch(95% 0.03 260);
+	--color-success: oklch(65% 0.15 150);
+	--color-success-content: oklch(95% 0.03 180);
+	--color-warning: oklch(75% 0.18 75);
+	--color-warning-content: oklch(30% 0.1 60);
+	--color-error: oklch(68% 0.22 350);
+	--color-error-content: oklch(95% 0.04 320);
+	--radius-selector: 1rem;
+	--radius-field: 1rem;
+	--radius-box: 1rem;
+	--size-selector: 0.25rem;
+	--size-field: 0.25rem;
+	--border: 2px;
+	--depth: 1;
+	--noise: 1;
+}
 
-@source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
+.gradient-btn {
+	@apply cursor-pointer bg-gradient-to-r from-primary to-secondary text-lg font-bold text-white transition-all duration-300 ease-out hover:translate-y-[-1px];
+}
 
-@custom-variant dark (&:where([data-mode=dark], [data-mode=dark] *));
+/* Version hover : gradients plus foncés */
+.gradient-btn:hover {
+	background-image: linear-gradient(to right, oklch(50% 0.2 195), oklch(45% 0.25 300));
+	transform: translateY(-1px);
+}

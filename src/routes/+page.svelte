@@ -1,10 +1,19 @@
 <script lang="ts">
-  import type { PageProps } from "./$types";
-  import Head from "$components/Head.svelte";
+	import Head from '$components/Head.svelte';
+
+	import equipage from '$content/equipage.json';
 </script>
 
 <Head />
 
-<h1>Welcome to SvelteKit</h1>
+<h1>Dashboard XP Pirate™</h1>
 
-<p>link an Ui elements: <a href="/demo-ui">Demo</a></p>
+<div class="flex">
+	<ul>
+		{#each equipage as projet}
+			<li>
+				<a href="/{projet.slug}">Projet: {projet.name}</a>
+			</li>
+		{/each}
+	</ul>
+</div>
