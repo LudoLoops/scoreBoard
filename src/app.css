@@ -9,9 +9,9 @@
 	default: false;
 	prefersdark: false;
 	color-scheme: 'light';
-	--color-base-100: #04192c;
-	--color-base-200: oklch(6% 0.015 220);
-	--color-base-300: oklch(65% 0.25 195);
+	--color-base-100: oklch(15% 0.09 281.288);
+	--color-base-200: oklch(20% 0.09 281.288);
+	--color-base-300: oklch(25% 0.09 281.288);
 	--color-base-content: oklch(95% 0.03 240);
 	--color-primary: oklch(65% 0.25 195);
 	--color-primary-content: oklch(95% 0.03 240);
@@ -39,6 +39,10 @@
 	--noise: 0;
 }
 
+body {
+	background: linear-gradient(180deg, #020e1f 0%, #0a1628 100%);
+}
+
 .gradient-btn {
 	@apply cursor-pointer bg-gradient-to-r from-primary to-secondary text-lg font-bold text-white transition-all duration-300 ease-out hover:translate-y-[-1px];
 }
@@ -47,4 +51,38 @@
 .gradient-btn:hover {
 	background-image: linear-gradient(to right, oklch(50% 0.2 195), oklch(45% 0.25 300));
 	transform: translateY(-1px);
+}
+
+.text-neon,
+.text-neon:hover {
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-weight: bold;
+	text-shadow:
+		0 0 5px var(--color-primary),
+		0 0 10px var(--color-primary),
+		0 0 20px var(--color-primary),
+		0 0 40px var(--color-primary);
+
+	animation: pulse-neon 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-neon {
+	0% {
+		text-shadow: 0 0 3px var(--color-primary);
+	}
+	100% {
+		text-shadow:
+			0 0 3px var(--color-primary),
+			0 0 5px var(--color-primary);
+	}
+}
+
+.neon-border {
+	box-shadow: 0 0 12px 1px oklch(65% 0.25 195);
+}
+
+.neon-border:hover {
+	box-shadow: 0 0 20px 1px oklch(65% 0.25 195);
 }

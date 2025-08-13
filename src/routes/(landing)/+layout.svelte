@@ -2,10 +2,8 @@
 	let { children } = $props();
 </script>
 
-<div class="navbar bg-base-100/40 shadow-sm">
-	<a href="/" class="  text-xl hover:bg-neutral">Dashboard XP Pirate™</a>
+<div class="navbar bg-base-100/20 shadow-sm">
+	<a href="/" class="gradient-btn btn text-xl">Dashboard XP Pirate™</a>
 </div>
 
-<main class="bg-neutral">
-	{@render children()}
-</main>
+{@render children()}

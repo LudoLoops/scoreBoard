@@ -33,10 +33,10 @@
 	}
 </script>
 
-<header class="navbar flex justify-around bg-base-100/40 shadow-sm">
-	<a href="/" class="  text-xl hover:bg-neutral">Dashboard XP Pirate™</a>
+<header class="navbar flex justify-between bg-base-100/20 shadow-sm">
+	<a href="/" class="gradient-btn btn text-xl hover:bg-neutral">Dashboard XP Pirate™</a>
 
-	<label class="input">
+	<label class="input input-primary">
 		<svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 			<g
 				stroke-linejoin="round"
@@ -49,12 +49,12 @@
 				<path d="m21 21-4.3-4.3"></path>
 			</g>
 		</svg>
-		<input type="search" bind:value={recherche} required placeholder="Rechercher" />
+		<input type="search" bind:value={recherche} required placeholder="Rechercher" class="" />
 	</label>
 </header>
 
-<h2>
-	{projet.name}
+<h2 class=" text-neon my-8 text-center text-2xl">
+	🏴‍☠️ {projet.name}
 </h2>
 
 <Table {users} />
