@@ -5,7 +5,7 @@
 	let { children } = $props();
 </script>
 
-<main>
+<main class="bg-neutral">
 	{@render children()}
 </main>
 

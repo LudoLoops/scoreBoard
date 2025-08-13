@@ -1,11 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
-	const { projet } = $props();
-
-	const { users } = projet;
-
-	let renderList = $state(users);
+	const { users } = $props();
+	let renderList = $derived(users);
 
 	let toggle = $state({ note: false, xp: false, bonus: false, nom: false });
 
@@ -64,7 +59,7 @@
 					<td>
 						<div class="flex flex-col items-center justify-center gap-4">
 							<span class="text-primary">
-								{staff.note}
+								{staff.note || 0}
 							</span>
 							<progress
 								class="progress w-56 progress-secondary"
@@ -72,13 +67,13 @@
 								class:progress-neutral={staff.note >= 30}
 								class:progress-warning={staff.note >= 26 && staff.note <= 30}
 								class:progress-error={staff.note >= 0 && staff.note < 26}
-								value={staff.note}
+								value={staff.note || 0}
 								max="50"
 							></progress>
 						</div>
 					</td>
 					<td class="text-center">
-						<div class="badge badge-outline badge-primary">{staff.bonus}</div>
+						<div class="badge badge-outline badge-primary">{staff.bonus || 0}</div>
 					</td>
 					<td>
 						<div class="flex flex-col items-center justify-center">
@@ -88,12 +83,12 @@
 								class:progress-neutral={staff.xp >= 40}
 								class:progress-warning={staff.xp >= 30 && staff.xp <= 40}
 								class:progress-error={staff.xp >= 0 && staff.xp < 30}
-								style="--value:{staff.xp};"
-								aria-valuenow={staff.xp}
+								style="--value:{staff.xp || 0};"
+								aria-valuenow={staff.xp || 0}
 								role="progressbar"
 							>
 								<span class="text-bold text-primary">
-									{staff.xp}
+									{staff.xp || 0}
 								</span>
 							</div>
 						</div>
