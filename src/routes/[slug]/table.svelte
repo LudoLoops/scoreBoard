@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	const { projet } = $props();
 
 	const { users } = projet;
@@ -45,21 +47,57 @@
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th onclick={() => sort('nom')}> Nom</th>
-				<th onclick={() => sort('note')}>note</th>
-				<th onclick={() => sort('bonus')}>bonus</th>
-				<th onclick={() => sort('xp')}>xp</th>
-				<th>tags</th>
+				<th onclick={() => sort('nom')} class="cursor-pointer text-left capitalize">Nom</th>
+				<th onclick={() => sort('note')} class="text-centercursor-pointer text-center capitalize"
+					>note</th
+				>
+				<th onclick={() => sort('bonus')} class="cursor-pointer text-center capitalize">bonus</th>
+				<th onclick={() => sort('xp')} class="cursor-pointer text-center capitalize">xp</th>
+				<th class="text-center capitalize">tags</th>
 			</tr>
 		</thead>
 		<tbody>
 			{#each renderList as staff}
-				<tr>
+				<tr class="hover:bg-base-300/20">
 					<th>{staff.userId}</th>
 					<td>{staff.nom}</td>
-					<td>{staff.note}</td>
-					<td>{staff.bonus}</td>
-					<td>{staff.xp}</td>
+					<td>
+						<div class="flex flex-col items-center justify-center gap-4">
+							<span class="text-primary">
+								{staff.note}
+							</span>
+							<progress
+								class="progress w-56 progress-secondary"
+								class:progress-success={staff.note >= 40}
+								class:progress-neutral={staff.note >= 30}
+								class:progress-warning={staff.note >= 26 && staff.note <= 30}
+								class:progress-error={staff.note >= 0 && staff.note < 26}
+								value={staff.note}
+								max="50"
+							></progress>
+						</div>
+					</td>
+					<td class="text-center">
+						<div class="badge badge-outline badge-primary">{staff.bonus}</div>
+					</td>
+					<td>
+						<div class="flex flex-col items-center justify-center">
+							<div
+								class="radial-progress"
+								class:progress-success={staff.xp >= 50}
+								class:progress-neutral={staff.xp >= 40}
+								class:progress-warning={staff.xp >= 30 && staff.xp <= 40}
+								class:progress-error={staff.xp >= 0 && staff.xp < 30}
+								style="--value:{staff.xp};"
+								aria-valuenow={staff.xp}
+								role="progressbar"
+							>
+								<span class="text-bold text-primary">
+									{staff.xp}
+								</span>
+							</div>
+						</div>
+					</td>
 					<td>{staff.tags}</td>
 				</tr>
 			{/each}
