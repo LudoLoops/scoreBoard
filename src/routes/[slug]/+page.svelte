@@ -59,4 +59,3 @@
 
 <Table {users} />
 
-hello

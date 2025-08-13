@@ -6,7 +6,7 @@
 
 @plugin "daisyui/theme" {
 	name: 'spaceCowboy';
-	default: false;
+	default: true;
 	prefersdark: false;
 	color-scheme: 'light';
 	--color-base-100: oklch(15% 0.09 281.288);
@@ -39,7 +39,7 @@
 	--noise: 0;
 }
 
-html {
+.main-bg {
 	background: linear-gradient(180deg, #020e1f 0%, #0a1628 100%);
 }
 
