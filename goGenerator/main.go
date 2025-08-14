@@ -105,7 +105,8 @@ func main() {
 
 		projetKey := gofakeit.ProductName()
 		slug := generateSlug(projetKey)
-		playerCount := 20 + rand.Intn(21)
+		minUsers := int(float64(maxUsers) * 0.6)
+		playerCount := minUsers + rand.Intn(maxUsers-minUsers+1)
 
 		// Mélanger les utilisateurs
 		rand.Shuffle(len(userIds), func(i, j int) {
